@@ -43,11 +43,15 @@ function onSendFedbackForm(event) {
     formEl.elements.message.value.trim() === ''
   ) {
     alert('Fill please all fields');
-  } else {
-    formData.email = formEl.elements.email.value.trim();
-    formData.message = formEl.elements.message.value.trim();
-    console.log(formData);
-    localStorage.clear('feedback-form-state');
-    formEl.reset();
+    return;
   }
+
+  console.log(formData);
+
+  localStorage.removeItem('feedback-form-state');
+
+  formEl.reset();
+
+  formData.email = '';
+  formData.message = '';
 }
